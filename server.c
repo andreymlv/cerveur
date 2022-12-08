@@ -170,7 +170,6 @@ int main(void) {
 
         char template[256];
         if (strstr(urlRoute, "/static/") != NULL) {
-          // strcat(template, urlRoute+1);
           strcat(template, "static/index.css");
         } else {
           struct route *destination = search(route, urlRoute);
