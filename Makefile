@@ -1,22 +1,27 @@
-CC=gcc
-CFLAGS=-Iinclude
-DEPS = HTTP_Server.h
-exec = server.o
-sources = $(wildcard src/*.c)
-objects = $(sources:.c=.o)
-flags = -g -Wall -lm -ldl -fPIC -rdynamic -I./include
-# flags = -I./include
+include config.mk
 
-$(exec): $(objects)
-	gcc $(objects) $(flags) -o $(exec)
+SRC = server.c http.c response.c routes.c
+OBJ = ${SRC:.c=.o}
 
-%.o: %.c %.h
-	gcc -c $(flags) $< -o $@
+all: options server
 
+options:
+	@echo dwm build options:
+	@echo "CFLAGS   = ${CFLAGS}"
+	@echo "CC       = ${CC}"
+
+.c.o:
+	${CC} -c ${CFLAGS} $<
+
+${OBJ}: config.mk
+
+server: ${OBJ}
+	${CC} -o $@ ${OBJ} ${LDFLAGS}
 
 clean:
-	-rm *.out
-	-rm *.o
-	-rm *.a
-	-rm src/*.a
-	-rm src/*.o
+	rm -f server ${OBJ}
+
+clangd: clean
+	bear -- make
+
+.PHONY: all options clean clangd

@@ -1,41 +1,62 @@
 [
   {
     "arguments": [
-      "/usr/bin/gcc",
-      "-Iinclude",
+      "/usr/bin/cc",
       "-c",
-      "-o",
-      "src/HTTP_Server.o",
-      "src/HTTP_Server.c"
+      "-g",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wextra",
+      "-O0",
+      "server.c"
     ],
-    "directory": "/home/infraredCoding/workspace/websockets",
-    "file": "/home/infraredCoding/workspace/websockets/src/HTTP_Server.c",
-    "output": "/home/infraredCoding/workspace/websockets/src/HTTP_Server.o"
+    "directory": "/home/andreymlv/src/cerveur",
+    "file": "/home/andreymlv/src/cerveur/server.c"
   },
   {
     "arguments": [
-      "/usr/bin/gcc",
-      "-Iinclude",
+      "/usr/bin/cc",
       "-c",
-      "-o",
-      "src/main.o",
-      "src/main.c"
+      "-g",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wextra",
+      "-O0",
+      "http.c"
     ],
-    "directory": "/home/infraredCoding/workspace/websockets",
-    "file": "/home/infraredCoding/workspace/websockets/src/main.c",
-    "output": "/home/infraredCoding/workspace/websockets/src/main.o"
+    "directory": "/home/andreymlv/src/cerveur",
+    "file": "/home/andreymlv/src/cerveur/http.c"
   },
   {
     "arguments": [
-      "/usr/bin/gcc",
-      "-Iinclude",
+      "/usr/bin/cc",
       "-c",
-      "-o",
-      "src/Routes.o",
-      "src/Routes.c"
+      "-g",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wextra",
+      "-O0",
+      "response.c"
     ],
-    "directory": "/home/infraredCoding/workspace/websockets",
-    "file": "/home/infraredCoding/workspace/websockets/src/Routes.c",
-    "output": "/home/infraredCoding/workspace/websockets/src/Routes.o"
+    "directory": "/home/andreymlv/src/cerveur",
+    "file": "/home/andreymlv/src/cerveur/response.c"
+  },
+  {
+    "arguments": [
+      "/usr/bin/cc",
+      "-c",
+      "-g",
+      "-std=c99",
+      "-pedantic",
+      "-Wall",
+      "-Wextra",
+      "-O0",
+      "routes.c"
+    ],
+    "directory": "/home/andreymlv/src/cerveur",
+    "file": "/home/andreymlv/src/cerveur/routes.c"
   }
 ]
