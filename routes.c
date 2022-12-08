@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct route *initRoute(char *key, char *value) {
+struct route *init_route(char *key, char *value) {
   struct route *temp = (struct route *)malloc(sizeof(struct route));
 
   temp->key = key;
@@ -22,19 +22,21 @@ void inorder(struct route *root) {
   }
 }
 
-struct route *addRoute(struct route *root, char *key, char *value) {
+struct route *add_route(struct route *root, char *key, char *value) {
   if (root == NULL) {
-    return initRoute(key, value);
+    return init_route(key, value);
   }
 
   if (strcmp(key, root->key) == 0) {
     printf("============ WARNING ============\n");
     printf("A Route For \"%s\" Already Exists\n", key);
   } else if (strcmp(key, root->key) > 0) {
-    root->right = addRoute(root->right, key, value);
+    root->right = add_route(root->right, key, value);
   } else {
-    root->left = addRoute(root->left, key, value);
+    root->left = add_route(root->left, key, value);
   }
+
+  return root;
 }
 
 struct route *search(struct route *root, char *key) {
@@ -49,4 +51,6 @@ struct route *search(struct route *root, char *key) {
   } else if (strcmp(key, root->key) < 0) {
     return search(root->left, key);
   }
+
+  return root;
 }

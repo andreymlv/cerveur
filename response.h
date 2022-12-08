@@ -1,1 +1,1 @@
-char *render_static_file(char *fileName);
+char *render_static_file(char *path);

@@ -8,9 +8,9 @@ struct route {
   struct route *left, *right;
 };
 
-struct route *initRoute(char *key, char *value);
+struct route *init_route(char *key, char *value);
 
-struct route *addRoute(struct route *root, char *key, char *value);
+struct route *add_route(struct route *root, char *key, char *value);
 
 struct route *search(struct route *root, char *key);
 

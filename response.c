@@ -1,28 +1,22 @@
 #include "response.h"
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/mman.h>
+#include <unistd.h>
 
-char *render_static_file(char *fileName) {
-  FILE *file = fopen(fileName, "r");
-
-  if (file == NULL) {
-    return NULL;
-  } else {
-    printf("%s does exist \n", fileName);
+char *render_static_file(char *path) {
+  char buf[4096];
+  ssize_t n;
+  char *str = NULL;
+  int fd = open(path, O_RDONLY);
+  size_t len = 0;
+  while ((n = read(fd, buf, sizeof buf)) > 0) {
+    str = realloc(str, len + n + 1);
+    memcpy(str + len, buf, n);
+    len += n;
+    str[len] = '\0';
   }
-
-  fseek(file, 0, SEEK_END);
-  long fsize = ftell(file);
-  fseek(file, 0, SEEK_SET);
-
-  char *temp = malloc(sizeof(char) * (fsize + 1));
-  char ch;
-  int i = 0;
-  while ((ch = fgetc(file)) != EOF) {
-    temp[i] = ch;
-    i++;
-  }
-  fclose(file);
-  return temp;
+  return str;
 }
