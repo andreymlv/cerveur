@@ -6,7 +6,7 @@ OBJ = ${SRC:.c=.o}
 all: options server
 
 options:
-	@echo dwm build options:
+	@echo server build options:
 	@echo "CFLAGS   = ${CFLAGS}"
 	@echo "CC       = ${CC}"
 
